@@ -1,13 +1,32 @@
-import javax.swing.JOptionPane;
+import Model.TrianguloIsoceles;
+import Model.Circulo;
+import Model.Square;
 
 public class App {
     public static void main(String[] args) throws Exception {
-       float x1, x2, x3;
-        float promedio;
-        x1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un número"));
-        x2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su segundo número"));
-        x3 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su tercer número"));
-        promedio = (x1 + x2 + x3) / 3;
-        System.out.println(promedio);
+
+        Square sq = new Square();
+        sq.setSide(5);
+        System.out.println("cuadrado");
+        System.out.println(sq.getPerimeter());
+        System.out.println(sq.getArea());
+        sq.getArea(5);
+
+        Circulo cir = new Circulo();
+        cir.setRadio(5);
+        System.out.println("circulo");
+        System.out.println(cir.getPerimeter());
+        System.out.println(cir.getArea());
+        cir.getArea(5);
+
+        TrianguloIsoceles tri = new TrianguloIsoceles();
+        tri.setBase(7);
+        tri.setHeight(5);
+        System.out.println("triangulo isoceles");
+        System.out.println(tri.getPerimeter());
+        System.out.println(tri.getArea());
+
+
+        
     }
 }
