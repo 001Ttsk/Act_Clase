@@ -1,8 +1,8 @@
 import javax.swing.JOptionPane;
 import Model.Estudiante;
+
 public class Acttividad_Individual_3_Promedio_Alumno {
     public static void main(String[] args) {
-        //Estudiantes creados
         Estudiante[] estudiantes = {
             new Estudiante("Luisa", "001"),
             new Estudiante("David", "002"),
@@ -10,40 +10,40 @@ public class Acttividad_Individual_3_Promedio_Alumno {
             new Estudiante("Victor", "004"),
             new Estudiante("Abraham", "005")
         };
-
-        //Ingresar las notas
         for (Estudiante estudiante : estudiantes) {
-            for (int i = 0; i < 5; i++) {
-                boolean entradaValida = false;
-                while (!entradaValida) {
-                    try {
-                        String input = JOptionPane.showInputDialog(
-                            "Ingrese la nota" + (i + 1) + "para" + estudiante.getNombre() + ":"
-                        );
-                        if (input == null) return; 
+            asignarNotas(estudiante);
+            mostrarResultados(estudiante);
+        }
+    }
 
-                        double nota = Double.parseDouble(input);
-                        if (nota >= 0 && nota <= 100) { 
-                            estudiante.setNota(i, nota);
-                            entradaValida = true;
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Ingrese una nota entre 0 y 100");
-                        }
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
+    private static void asignarNotas(Estudiante estudiante) {
+        for (int i = 0; i < 5; i++) {
+            boolean notaValida = false;
+            while (!notaValida) {
+                String input = JOptionPane.showInputDialog(
+                    "Ingrese la nota " + (i + 1) + " para " + estudiante.getNombre() + ":"
+                );
+                if (input == null) System.exit(0);
+                if (input.matches("\\d+(\\.\\d+)?")) {
+                    double nota = Double.parseDouble(input);
+                    if (nota >= 0 && nota <= 100) {
+                        estudiante.setNota(i, nota);
+                        notaValida = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ingrese una nota entre 0 y 100");
                     }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido.");
                 }
             }
         }
+    }
 
-        //Salida de informacion
-        System.out.println("Promedios");
-        for (Estudiante estudiante : estudiantes) {
-            System.out.println("Nombre:" + estudiante.getNombre());
-            System.out.println("Matricula:" + estudiante.getMatricula());
-            System.out.println("Promedio:" + estudiante.calcularPromedio());
-            System.out.println("El estudiante aprobo?:" + (estudiante.aprobado() ? "Si" : "No"));
-            System.out.println("------------------------");
-        }
+    private static void mostrarResultados(Estudiante estudiante) {
+        System.out.println("Nombre: " + estudiante.getNombre());
+        System.out.println("Matricula: " + estudiante.getMatricula());
+        System.out.println("Promedio: " + estudiante.calcularPromedio());
+        System.out.println("El estudiante aprobo? " + (estudiante.aprobado() ? "Si" : "No"));
+        System.out.println("------------");
     }
 }
