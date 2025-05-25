@@ -26,7 +26,6 @@ public class App {
         System.out.println(tri.getPerimeter());
         System.out.println(tri.getArea());
 
-
         
     }
 }
