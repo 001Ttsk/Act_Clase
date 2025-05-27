@@ -10,37 +10,19 @@ public class Estudiante {
         this.matricula = matricula;
     }
 
-    // Métodos de acceso (Getters y Setters)
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getMatricula() {
         return matricula;
     }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
+    
     public void setNota(int indice, double nota) {
         if (indice >= 0 && indice < notas.length) {
             notas[indice] = nota;
         } else {
             System.out.println("indice fuera de rango");
-        }
-    }
-
-    public double getNota(int indice) {
-        if (indice >= 0 && indice < notas.length) {
-            return notas[indice];
-        } else {
-            System.out.println("indice fuera de rango");
-            return -1;
         }
     }
 
